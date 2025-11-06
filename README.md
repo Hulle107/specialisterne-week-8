@@ -53,7 +53,7 @@ Databasen anvendes som **mål for ETL-processen** — dvs. den modtager og opdat
 |**SQL-Injection**|Uvaliderede input fra ETL-laget manipulerer queries|Udviklerfejl eller ondsindet input|Datamanipulation, eksfiltration|
 |**Datalæk**|Klartekst-credentials, ukrypteret forbindelse, eller læk via logs|Utilsigtet fejl, konfigurationsfejl|Fortrolighedsbrud|
 |**Manglende logning / audit**|Manglende sporbarhed ved fejl eller misbrug|Intern fejl eller manipulation|Manglende detektion og efterforskning|
-|**Afhængighedssårbarheder**|Biblioteker som `pymysql`, `sqlalchemy` kan have CVE’er|Ekstern angriber|Kompromittering af databaseforbindelse|
+|**Afhængighedssårbarheder**|Biblioteker som `pymysql`, `sqlalchemy` kan have CVE’er (*Common vulnerabilities and Exposures*)|Ekstern angriber|Kompromittering af databaseforbindelse|
 
 ## 5. Sårbarhedsanalyse
 
@@ -158,7 +158,7 @@ engine.execute(stmt, {"id": user_id, "name": user_name})
 
 **Risiko:**
 
-- Kendte CVE’er kan udnyttes, hvis projektet ikke holdes opdateret.
+- Kendte CVE’er (*Common vulnerabilities and Exposures*) kan udnyttes, hvis projektet ikke holdes opdateret.
 
 **Anbefalinger:**
 
