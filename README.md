@@ -53,7 +53,6 @@ Databasen anvendes som **mål for ETL-processen** — dvs. den modtager og opdat
 |**SQL-Injection**|Uvaliderede input fra ETL-laget manipulerer queries|Udviklerfejl eller ondsindet input|Datamanipulation, eksfiltration|
 |**Datalæk**|Klartekst-credentials, ukrypteret forbindelse, eller læk via logs|Utilsigtet fejl, konfigurationsfejl|Fortrolighedsbrud|
 |**Manglende logning / audit**|Manglende sporbarhed ved fejl eller misbrug|Intern fejl eller manipulation|Manglende detektion og efterforskning|
-|**Utilstrækkelig adgangskontrol**|DB-bruger har for brede rettigheder|Konfigurationsfejl|Forringet integritet og isolation|
 |**Afhængighedssårbarheder**|Biblioteker som `pymysql`, `sqlalchemy` kan have CVE’er|Ekstern angriber|Kompromittering af databaseforbindelse|
 
 ## 5. Sårbarhedsanalyse
@@ -78,7 +77,6 @@ Databasen anvendes som **mål for ETL-processen** — dvs. den modtager og opdat
 
 - Fjern `db_credentials.txt` fra repository.
 - Roter alle credentials.
-- Opret en dedikeret DB-bruger med kun SELECT, INSERT, UPDATE og DELETE.
 - Overvej brug af miljøvariabler eller en secrets-manager.
 - Aktivér flerfaktor-autentificering for databaseadministratorer.
 
@@ -175,7 +173,6 @@ engine.execute(stmt, {"id": user_id, "name": user_name})
 |Klartekst credentials|Fuldt DB-kompromis|Høj|Kritisk|
 |SQL-injection|Manipulation, datatyveri|Middel|Høj|
 |Ukrypteret DB-forbindelse|Læk af data og login|Middel|Høj|
-|For brede DB-rettigheder|Utilsigtet datatab|Middel|Medium|
 |Manglende audit-logning|Ingen sporbarhed|Middel|Medium|
 |Sårbare afhængigheder|Potentiel udnyttelse|Lav|Lav|
 
