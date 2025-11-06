@@ -60,9 +60,13 @@ Databasen anvendes som **mål for ETL-processen** — dvs. den modtager og opdat
 
 ### 5.1 Bruger- og adgangsstyring
 
-**Observation:**<br>
-Projektet gemmer database-login i klartekst i filen `db_credentials.txt`.<br>
-Der anvendes ingen central autentificering eller tokens.
+|![utils.py -> _read_credentials](images/utils._read_credentials.png)|![utils.py -> get_engine](images/utils.get_engine.png)|
+| :-: | :-: |
+
+**Observation:**
+
+- Projektet gemmer database-login i klartekst i filen `db_credentials.txt`.
+- Der anvendes ingen central autentificering eller tokens.
 
 **Risiko:**
 
@@ -80,9 +84,13 @@ Der anvendes ingen central autentificering eller tokens.
 
 ### 5.2 SQL-Injection
 
-**Observation:**<br>
-Projektet bruger SQLAlchemy, men hvis der indsættes dynamiske SQL-strenge (f.eks. f-strings eller string-concatenation), kan det give risiko for SQL-injection.<br>
-Der er ingen input-sanitering i den del af koden, der indlæser CSV-data.
+|![utils.py -> load_to_sql -> unique_contraints](images/utils.load_to_sql.constraints.png)|
+| :-: |
+
+**Observation:**
+
+- Projektet bruger SQLAlchemy, men hvis der indsættes dynamiske SQL-strenge (f.eks. f-strings eller string-concatenation), kan det give risiko for SQL-injection.
+- Der er ingen input-sanitering i den del af koden, der indlæser CSV-data.
 
 **Risiko:**
 
@@ -104,9 +112,13 @@ engine.execute(stmt, {"id": user_id, "name": user_name})
 
 ### 5.3 Datalæk og fortrolighed
 
-**Observation:**<br>
-Der er ingen kryptering af forbindelsen mellem ETL-komponenten og MySQL, og credentials ligger i klartekst.<br>
-Der anvendes heller ingen kryptering ved lagring af data.
+|![utils.py -> get_engine](images/utils.get_engine.png)|
+| :-: |
+
+**Observation:**
+
+- Der er ingen kryptering af forbindelsen mellem ETL-komponenten og MySQL, og credentials ligger i klartekst.
+- Der anvendes heller ingen kryptering ved lagring af data.
 
 **Risiko:**
 
@@ -122,9 +134,10 @@ Der anvendes heller ingen kryptering ved lagring af data.
 
 ### 5.4 Logning og audit
 
-**Observation:**<br>
-Projektet logger ikke autentificerings- eller transaktionshændelser.<br>
-Fejl printes lokalt uden central registrering.
+**Observation:**
+
+- Projektet logger ikke autentificerings- eller transaktionshændelser.
+- Fejl printes lokalt uden central registrering.
 
 **Risiko:**
 
@@ -140,9 +153,10 @@ Fejl printes lokalt uden central registrering.
 
 ### 5.5 Konfigurations- og afhængighedssikkerhed
 
-**Observation:**<br>
-Der er ingen CI-pipeline til sikkerhedsscanning.<br>
-Afhængigheder som **sqlalchemy** og **pymysql** kan indeholde sårbarheder over tid.
+**Observation:**
+
+- Der er ingen CI-pipeline til sikkerhedsscanning.
+- Afhængigheder som **sqlalchemy** og **pymysql** kan indeholde sårbarheder over tid.
 
 **Risiko:**
 
