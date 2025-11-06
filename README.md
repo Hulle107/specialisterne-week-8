@@ -41,7 +41,7 @@ Projektet består af:
 
 - Python-scripts, der læser data fra CSV-filer
 - En MySQL-database, som opdateres gennem SQLAlchemy eller direkte queries
-- En konfigurationsfil (`config.yaml`) og en credential-fil (`db_credentials.txt`)
+- En konfigurationsfil (`config.yaml`) og en credential-fil (`credentials_file.txt`)
 
 Databasen anvendes som **mål for ETL-processen** — dvs. den modtager og opdaterer data, men håndterer ikke slutbrugere direkte. Sikkerheden afhænger derfor primært af, hvordan forbindelsen etableres, og hvordan input behandles.
 
@@ -64,7 +64,7 @@ Databasen anvendes som **mål for ETL-processen** — dvs. den modtager og opdat
 
 **Observation:**
 
-- Projektet gemmer database-login i klartekst i filen `db_credentials.txt`.
+- Projektet gemmer database-login i klartekst i filen `credentials_file.txt`.
 - Der anvendes ingen central autentificering eller tokens.
 
 **Risiko:**
@@ -75,7 +75,7 @@ Databasen anvendes som **mål for ETL-processen** — dvs. den modtager og opdat
 
 **Anbefalinger:**
 
-- Fjern `db_credentials.txt` fra repository.
+- Fjern `credentials_file.txt` fra repository.
 - Roter alle credentials.
 - Overvej brug af miljøvariabler eller en secrets-manager.
 - Aktivér flerfaktor-autentificering for databaseadministratorer.
