@@ -191,9 +191,8 @@ Ved at implementere anbefalingerne kan projektet bringes op til en acceptabel si
 |1|Fjern credentials fra repo og roter adgang|Erstat med miljøvariabler / secret manager|Kritisk|
 |2|Aktivér SSL/TLS på DB-forbindelse|Krypter transportlaget|Kritisk|
 |3|Implementér inputvalidering og parameteriserede queries|Forebyg SQL-injection|Høj|
-|4|Begræns DB-brugerrettigheder|Least privilege-princip|Høj|
-|5|Tilføj audit-log og central logning|Sporbarhed og kontrol|Medium|
-|6|Kør pip-audit og bandit i CI|Forebyg afhængighedsrisici|Medium|
+|4|Tilføj audit-log og central logning|Sporbarhed og kontrol|Medium|
+|5|Kør pip-audit og bandit i CI|Forebyg afhængighedsrisici|Medium|
 
 ## 9. Konklusion
 
